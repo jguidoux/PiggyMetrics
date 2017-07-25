@@ -1,0 +1,11 @@
+
+
+description = """monitoring"""
+
+
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-turbine-stream'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-hystrix-dashboard'
+}

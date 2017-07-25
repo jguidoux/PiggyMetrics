@@ -1,0 +1,70 @@
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+apply plugin: 'base'
+
+group = 'org.test'
+description = """"""
+
+
+allprojects {
+    version = '1.0.0-SNAPSHOT'
+
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '4.0.1'
+    }
+
+    task buildComplete(dependsOn: build)
+}
+
+
+
+
+subprojects {
+
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'docker'
+
+
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+
+    ext {
+        springCloudVersion = 'Dalston.SR2'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    dependencies {
+
+
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+    }
+
+
+
+}
