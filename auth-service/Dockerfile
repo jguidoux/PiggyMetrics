@@ -1,7 +1,7 @@
 FROM java:8-jre
 MAINTAINER Alexander Lukyanchikov <sqshq@sqshq.com>
 
-ADD ./target/auth-service.jar /app/
+ADD ./build/libs/auth-service-*.jar /app/auth-service.jar
 CMD ["java", "-Xmx200m", "-jar", "/app/auth-service.jar"]
 
 EXPOSE 5000
